@@ -113,7 +113,7 @@ abstract class Browse extends Plugin
 
 		class Scan extends syntaxAnalyzer.UnitScanner(unit)
 		{
-			override def deprecationWarning(off: Int, msg: String) {}
+			override def deprecationWarning(off: Int, msg: String, since: String) {}
 			override def error(off: Int, msg: String) {}
 			override def incompleteInputError(off: Int, msg: String) {}
 
@@ -180,7 +180,7 @@ abstract class Browse extends Plugin
 		!s.exists ||
 		s.isPackage || // nothing done with packages
 		s.isImplClass
-		
+
 	private class Traverse(tokens: wrap.SortedSetWrapper[Token], source: SourceFile, index: TopLevelIndex) extends Traverser
 	{
 		// magic method #1
@@ -216,7 +216,7 @@ abstract class Browse extends Plugin
 					handleDefault()
 			}
 		}
-		
+
 		// magic method #2
 		private def process(t: Tree, index: TopLevelIndex)
 		{
